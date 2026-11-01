@@ -2,7 +2,7 @@
 
 A simple website showing upcoming church and social events at Olton Friary, kept up to date automatically from [oltonfriary.org.uk](https://www.oltonfriary.org.uk/).
 
-**Status:** mockups approved. The website shell is being built on the `website` branch: Home works, and the two lists are still empty.
+**Status:** mockups and website shell approved. Phase 5 is under way on the `website` branch: Church Events works from sample events typed in from the mockup, and Social Events is still empty. The site doesn't read the parish website yet.
 
 ## What it does
 
@@ -19,6 +19,8 @@ A simple website showing upcoming church and social events at Olton Friary, kept
 | `index.html` | The Home screen |
 | `church.html`, `social.html` | The two list screens |
 | `style.css` | Colours, fonts and layout for every screen |
+| `list.js` | Draws a list and its Week/Month filter |
+| `data/events.json` | The events the lists show |
 | `handoffs/` | The specification: shared rules, one document per screen, the scraper, and decisions |
 | `mockups/` | The approved screens from the design canvas |
 | `assets/church-background.png` | The cleaned Home background, 932 × 462 pixels |

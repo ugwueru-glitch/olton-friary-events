@@ -8,15 +8,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="list.js" defer></script>
 </head>
-<body>
-<header class="list-header list-header-church">
-  <div class="list-header-inner">
-    <a class="back-arrow" href="index.html" aria-label="Back to home">
-      <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
-    </a>
-    <h1>Church Events</h1>
+<body data-category="church">
+<div class="list-screen list-screen-church">
+  <header class="list-header list-header-church">
+    <div class="list-header-inner">
+      <a class="back-arrow" href="index.html" aria-label="Back to home">
+        <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+      </a>
+      <h1>Church Events</h1>
+    </div>
+  </header>
+  <div class="filter" hidden>
+    <div class="filter-inner">
+      <div class="filter-view">
+        <button type="button" data-view="week">Week</button>
+        <button type="button" data-view="month">Month</button>
+      </div>
+      <div class="filter-period">
+        <button class="filter-arrow" type="button" data-step="-1" aria-label="Earlier">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div class="filter-label"></div>
+        <button class="filter-arrow" type="button" data-step="1" aria-label="Later">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
   </div>
-</header>
+  <main class="scroller">
+    <div class="scroller-inner">
+      <div class="day-list"></div>
+      <p class="list-footer"></p>
+    </div>
+  </main>
+</div>
 </body>
 </html>

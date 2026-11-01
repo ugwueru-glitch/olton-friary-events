@@ -8,14 +8,14 @@ All three screens are approved. The handoffs in `handoffs/` are the specificatio
 
 ## Task
 
-Phase 4 only: build the shell.
+Phase 4, finished and approved on 1 November 2026: build the shell.
 
 1. Create a branch called `website` from `main`.
 2. Build the site with no framework: colours, fonts (Atkinson Hyperlegible and Gelasio), background image, the finished Home screen, and navigation to two empty list screens with their header bars.
 3. Keep the site working from a sub-path, because the address is `https://ugwueru-glitch.github.io/olton-friary-events/`.
 4. Check it at phone and computer widths, then give the owner a link they can open to see it.
 
-Don't build the lists, the filter or the scraper yet. Those are Phase 5.
+Phase 5, started on 1 November 2026: the lists, the filter and the scraper, one item at a time. Church Events comes first, then Social Events, then the scraper.
 
 ## Rules
 
