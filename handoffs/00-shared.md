@@ -8,7 +8,7 @@ It must stay simple: two buttons, two lists, one filter. It is not a parish webs
 
 ## Platform
 
-A public website that works on phones and computers. There is nothing to install. The final output is a live web link, refreshed automatically every 3 days.
+A public website that works on phones and computers. There is nothing to install. The final output is a live web link, refreshed automatically every Monday.
 
 ## Design tokens
 

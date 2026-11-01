@@ -1,0 +1,53 @@
+# Reads the parish website every Monday and publishes the new events.
+# A failed run changes nothing, and GitHub emails the owner its own failure notice.
+name: Refresh events
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci --ignore-scripts
+
+      - name: Check the rules
+        run: npm test
+
+      - name: Read the parish website
+        run: npm run scrape
+
+      - name: Publish the new data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/events.json
+          git diff --staged --quiet || git commit -m 'Refresh events'
+          git push
+
+      - name: Tell the owner about unread lines
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s scraper/unread.txt ] || exit 0
+          title='Lines the scraper could not read'
+          open=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body-file scraper/unread.txt
+          else
+            gh issue create --title "$title" --body-file scraper/unread.txt
+          fi

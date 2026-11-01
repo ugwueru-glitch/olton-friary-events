@@ -4,7 +4,7 @@ This part runs behind the scenes and has no screen.
 
 ## Job
 
-Every 3 days, read the parish website, turn what it finds into a clean list of dated events, and update the live site with no manual steps.
+Every Monday, read the parish website, turn what it finds into a clean list of dated events, and update the live site with no manual steps.
 
 ## Sources
 
