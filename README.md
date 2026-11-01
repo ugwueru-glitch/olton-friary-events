@@ -2,7 +2,7 @@
 
 A simple website showing upcoming church and social events at Olton Friary, kept up to date automatically from [oltonfriary.org.uk](https://www.oltonfriary.org.uk/).
 
-**Status:** mockups and website shell approved. Phase 5 is under way on the `website` branch: Church Events, Social Events and the scraper work, and `data/events.json` now comes from the parish website. The scraper has only been run by hand so far. The automatic timer is written, but GitHub won't run it until it's on the default branch.
+**Status:** live at https://ugwueru-glitch.github.io/olton-friary-events/, published from `main`. The events come from the parish website, and a timer refreshes them every Monday. Ask the Parish Office before sharing the link publicly.
 
 ## What it does
 
