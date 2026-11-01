@@ -26,6 +26,15 @@ There are no open choices. The owner decided all of these on 1 November 2026, an
 
 The owner contacts the Parish Office (choice 6), and only then shares the link.
 
-## For Phase 4
+## Stack
 
-Stack and hosting are chosen at the start of coding. Free GitHub Pages doesn't publish from a private repository, so hosting needs checking against the private repository planned here. Every service chosen must have a free plan that covers this project.
+The owner chose this on 1 November 2026. Everything must stay free.
+
+- **Website:** plain HTML, CSS and JavaScript, with no framework.
+- **Scraper:** a small Node program.
+- **Refresh:** a GitHub Actions timer every 3 days.
+- **Hosting:** GitHub Pages, which means the repository is public. Nothing private or secret goes in it, and public commits use the owner's GitHub no-reply email.
+- **Alerts:** failed runs use GitHub's own email notice. Lines the scraper can't read open a GitHub issue, which also emails the owner.
+- **Address:** `https://ugwueru-glitch.github.io/olton-friary-events/` to start with.
+
+GitHub turns off timed jobs in a public repository after 60 days with no activity, so each refresh must leave a commit, even when no events changed. The "last refreshed" date in the data file does this.

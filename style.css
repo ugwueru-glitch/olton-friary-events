@@ -1,0 +1,210 @@
+/* Colours from handoffs/00-shared.md */
+:root {
+  --friary-purple: #4A1D7A;
+  --warm-gold: #F5B82E;
+  --white: #FFFFFF;
+  --dark-ink: #231A33;
+  --soft-grey: #5B5368;
+  --divider: #E8E4EE;
+  --border: #D8D4E0;
+  --pale-purple: #EFE9F6;
+  --pale-gold: #FDF1D3;
+  /* Stops phone browsers repainting the approved colours in dark mode */
+  color-scheme: only light;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--dark-ink);
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-size: 18px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Home, phone first */
+.home {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 20px 20px;
+  background: var(--white);
+}
+
+.home-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20% bottom;
+  opacity: 0.6;
+}
+
+.home-title {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 0 72px;
+}
+
+.home-title svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-title .arc-computer {
+  display: none;
+}
+
+.home-buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.home-button {
+  box-sizing: border-box;
+  height: 136px;
+  border-radius: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 16px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.home-button-church {
+  background: rgba(74, 29, 122, 0.85);
+  color: var(--white);
+}
+
+.home-button-social {
+  background: rgba(245, 184, 46, 0.85);
+  color: var(--dark-ink);
+}
+
+.home-emoji {
+  font-size: 44px;
+  line-height: 1;
+}
+
+.home-ring {
+  flex: none;
+  width: 60px;
+  height: 60px;
+}
+
+/* List screens, phone first */
+.list-header {
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px;
+}
+
+.list-header-church {
+  background: var(--friary-purple);
+  color: var(--white);
+}
+
+.list-header-social {
+  background: var(--warm-gold);
+  color: var(--dark-ink);
+}
+
+.list-header-inner {
+  width: 100%;
+  max-width: 736px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.back-arrow {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Computer */
+@media (min-width: 820px) {
+  .home {
+    padding: 40px 16px 32px;
+  }
+
+  .home-title {
+    max-width: 640px;
+    margin-bottom: 80px;
+  }
+
+  .home-title .arc-phone {
+    display: none;
+  }
+
+  .home-title .arc-computer {
+    display: block;
+  }
+
+  .home-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+    max-width: 960px;
+  }
+
+  .home-button {
+    flex: 1 1 352px;
+    max-width: 448px;
+    height: 170px;
+    border-radius: 85px;
+    gap: 16px;
+    padding: 0 24px;
+    font-size: 34px;
+  }
+
+  .home-emoji {
+    font-size: 56px;
+  }
+
+  .home-ring {
+    width: 72px;
+    height: 72px;
+  }
+
+  .list-header {
+    padding: 16px;
+  }
+
+  .list-header-inner {
+    gap: 12px;
+  }
+
+  .list-header h1 {
+    font-size: 32px;
+  }
+}

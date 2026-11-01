@@ -1,0 +1,38 @@
+# Coding session brief
+
+## Background
+
+Olton Friary Events is a simple public website showing upcoming church and social events at Olton Friary, updated automatically from oltonfriary.org.uk. The owner doesn't code and directs the work, so explain things in plain words.
+
+All three screens are approved. The handoffs in `handoffs/` are the specification, with `mockups/` as the visual reference. The stack is in `handoffs/05-open-choices.md`.
+
+## Task
+
+Phase 4 only: build the shell.
+
+1. Create a branch called `website` from `main`.
+2. Build the site with no framework: colours, fonts (Atkinson Hyperlegible and Gelasio), background image, the finished Home screen, and navigation to two empty list screens with their header bars.
+3. Keep the site working from a sub-path, because the address is `https://ugwueru-glitch.github.io/olton-friary-events/`.
+4. Check it at phone and computer widths, then give the owner a link they can open to see it.
+
+Don't build the lists, the filter or the scraper yet. Those are Phase 5.
+
+## Rules
+
+- Do what the owner asks, no more and no less. One item at a time, then wait for their verdict.
+- Never build on `main`. Commit and push only when told.
+- The project must stay free. Don't add a paid service.
+- Nothing private goes in this public repository. Commits use the no-reply email already set in this repository's git settings.
+- When the owner changes something, update the handoffs and README in the same piece of work.
+- Report honestly what was and wasn't tested.
+- The owner handles their own accounts and passwords.
+
+## Location
+
+- Repository: `C:\Users\Andrew Ugwueru\Projects\olton-friary-events`
+- GitHub: https://github.com/ugwueru-glitch/olton-friary-events
+- Read `handoffs/00-shared.md` and `handoffs/01-home.md` first.
+
+## Output
+
+The Home screen and shell open from a link, and matching `handoffs/01-home.md`, for the owner to approve before the first commit. There is no APK and no phone tooling.
