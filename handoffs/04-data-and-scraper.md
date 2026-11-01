@@ -16,7 +16,7 @@ Checked on 1 November 2026.
 | `/hire-and-events/events/` | Web page linking a PDF | The link to the PDF below |
 | `coming-up-in-2026-and-2027-1-.pdf` | PDF | "Dates for your diary": fundraising events up to March 2027 |
 | `/worship-and-sacraments/mass-information/weekly-diary/` | Web page text | The same diary as the newsletter, useful as a cross-check |
-| Home page | Web page text | Regular Mass times, used to fill gaps such as the unnamed 11.00 |
+| Home page | Web page text | Regular Mass times. These are held as fixed rules in the scraper, used to fill gaps such as the unnamed 11.00, and the page isn't fetched |
 
 The PDF's file name will change over time, so find it from the link on the events page, and never hard-code it.
 
@@ -32,7 +32,9 @@ The project must be free, so the scraper uses fixed rules and no AI or paid serv
 - **PDF "Dates for your diary":** one event per line, in the form date, title, time.
 - **Notices:** lines holding a recognisable date, plus a known section such as "Blessing of Graves" or "Upcoming Parish hall events". Lists of dates, such as "Nov 2, 16 & 30, Dec 14", become one event per date.
 
-The rules allow for the site's habits: "1st November", "Nov 14" and "Saturday 5 December", times like "7.00" and "11am-2pm", stray spaces and small typing errors. A notice with no year takes the next time that date falls.
+The rules allow for the site's habits: "1st November", "Nov 14" and "Saturday 5 December", times like "7.00" and "11am-2pm", stray spaces and small typing errors. A notice with no year takes the next time that date falls, unless that date passed within the last 90 days. Then the notice is out of date and is dropped, so it can't reappear a year later.
+
+An unnamed entry in the diary counts as a Mass only at a regular Mass time. Any other unnamed entry is reported to the owner by date and time, without its text, because the text may be someone's name.
 
 Fixed rules can miss a notice worded in a new way. So any line that looks like it holds a date but produces no event is listed for the owner, and new rules are added when needed.
 
@@ -54,7 +56,7 @@ Feast names are stored by date. The file also records when it was last refreshed
 
 ## Keeping events over time
 
-The newsletter is replaced each week, so an event mentioned once must not vanish when that newsletter does. Events stay stored until their date has passed. Newer information about the same event replaces older information.
+The newsletter is replaced each week, so an event mentioned once must not vanish when that newsletter does. Events stay stored until their date has passed. Newer information about the same event replaces older information. A new Weekly Diary replaces all earlier diary rows for the days it covers, so a moved Mass doesn't stay listed. A notice that moves to a new date shows on both dates until the old one passes.
 
 ## Safety checks
 
@@ -67,4 +69,6 @@ Wrong dates are worse than missing ones, because people could turn up at the wro
 
 ## Testing
 
-Save real copies of the current pages and PDF as test samples. The expected results for those samples are the events shown in the approved mockups. Add a new sample each time a newsletter breaks a rule, so the fix stays fixed.
+Save copies of the current pages and PDF as test samples in `scraper/samples/`. The repository is public, so names, intentions, email addresses and phone numbers are replaced with placeholders in the samples. The expected results for those samples are the events shown in the approved mockups. Add a new sample each time a newsletter breaks a rule, so the fix stays fixed.
+
+Run the tests with `npm test`, and a refresh with `npm run scrape`.

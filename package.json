@@ -1,0 +1,11 @@
+{
+  "name": "olton-friary-events",
+  "private": true,
+  "scripts": {
+    "scrape": "node scraper/scrape.js",
+    "test": "node --test scraper/parse.test.js"
+  },
+  "dependencies": {
+    "pdfjs-dist": "5.4.296"
+  }
+}
