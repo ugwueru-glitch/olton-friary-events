@@ -1,0 +1,18 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-01T21:00:00Z" },
+  "title": "Olton Friary Events",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1280, "h": 720, "title": "Home, computer", "expand": "fill", "is_interactive": true },
+    "HomePhone.dc.html": { "x": 1360, "y": 0, "w": 390, "h": 844, "title": "Home, phone", "is_interactive": true },
+    "ChurchEvents.dc.html": { "x": 0, "y": 964, "w": 1280, "h": 720, "title": "Church Events, computer", "expand": "fill", "is_interactive": true },
+    "ChurchEventsPhone.dc.html": { "x": 1360, "y": 964, "w": 390, "h": 844, "title": "Church Events, phone", "is_interactive": true },
+    "SocialEvents.dc.html": { "x": 0, "y": 1928, "w": 1280, "h": 720, "title": "Social Events, computer", "expand": "fill", "is_interactive": true },
+    "SocialEventsPhone.dc.html": { "x": 1360, "y": 1928, "w": 390, "h": 844, "title": "Social Events, phone", "is_interactive": true }
+  },
+  "order": ["Main.dc.html", "HomePhone.dc.html", "ChurchEvents.dc.html", "ChurchEventsPhone.dc.html", "SocialEvents.dc.html", "SocialEventsPhone.dc.html"],
+  "notes": {},
+  "designSystems": []
+}

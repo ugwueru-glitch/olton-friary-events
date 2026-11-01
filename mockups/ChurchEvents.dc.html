@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Church Events</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.scroller{scrollbar-color:#4A1D7A #EFE9F6;scrollbar-width:auto}
+</style>
+</helmet>
+<div style="height: 100vh; min-height: 480px; box-sizing: border-box; display: flex; flex-direction: column; background: #FFFFFF; font-family: 'Atkinson Hyperlegible', sans-serif; color: #231A33">
+  <div style="background: #4A1D7A; color: #FFFFFF; display: flex; justify-content: center; padding: 1rem">
+    <div style="width: 100%; max-width: 46rem; display: flex; align-items: center; gap: 0.75rem">
+      <a href="Main.dc.html" aria-label="Back to home" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex: none">
+        <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+      </a>
+      <h1 style="margin: 0; font-size: 32px; font-weight: 700; line-height: 1.2">Church Events</h1>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; padding: 1rem; border-bottom: 1px solid #D8D4E0">
+    <div style="width: 100%; max-width: 46rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem">
+      <div style="display: flex; border: 2px solid #4A1D7A; border-radius: 26px; overflow: hidden">
+        <button onClick="{{showWeeks}}" style="height: 48px; width: 96px; border: 0; font-size: 19px; font-weight: 700; background: {{weekBg}}; color: {{weekFg}}">Week</button>
+        <button onClick="{{showMonths}}" style="height: 48px; width: 96px; border: 0; font-size: 19px; font-weight: 700; background: {{monthBg}}; color: {{monthFg}}">Month</button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1 1 18rem; justify-content: flex-end">
+        <button onClick="{{previous}}" aria-label="Earlier" style="width: 48px; height: 48px; flex: none; border: 0; border-radius: 24px; background: #EFE9F6; display: flex; align-items: center; justify-content: center; visibility: {{prevVisible}}">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A1D7A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div style="font-size: 20px; font-weight: 700; text-align: center; flex: 1 1 auto">{{periodLabel}}</div>
+        <button onClick="{{next}}" aria-label="Later" style="width: 48px; height: 48px; flex: none; border: 0; border-radius: 24px; background: #EFE9F6; display: flex; align-items: center; justify-content: center; visibility: {{nextVisible}}">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A1D7A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="scroller" style="flex: 1 1 0; min-height: 0; overflow-y: scroll; display: flex; flex-direction: column; align-items: center; padding: 0 1rem">
+    <div style="width: 100%; max-width: 46rem; padding-bottom: 2rem">
+      <sc-for list="{{days}}" as="day" hint-placeholder-count="3">
+        <div style="padding-top: 1.5rem">
+          <h2 style="margin: 0; font-size: 24px; font-weight: 700; line-height: 1.3; color: #4A1D7A">{{day.heading}}</h2>
+          <sc-if value="{{day.feast}}" hint-placeholder-val="{{ true }}">
+            <div style="font-size: 19px; line-height: 1.4; color: #5B5368">{{day.feast}}</div>
+          </sc-if>
+          <sc-for list="{{day.events}}" as="event" hint-placeholder-count="2">
+            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid #E8E4EE">
+              <div style="flex: 0 0 5.25rem; font-size: 20px; font-weight: 700; line-height: 1.4">{{event.time}}</div>
+              <div style="flex: 1 1 0; min-width: 0">
+                <div style="font-size: 20px; line-height: 1.4">{{event.title}}</div>
+                <sc-if value="{{event.note}}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size: 18px; line-height: 1.4; color: #5B5368">{{event.note}}</div>
+                </sc-if>
+              </div>
+              <div style="flex: none; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center">
+                <sc-if value="{{event.isMass}}" hint-placeholder-val="{{ false }}">
+                  <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-linecap="round">
+                    <path d="M32 1v3M15 7l2 3M49 7l-2 3M9 20h3M55 20h-3" stroke="#D9A400" stroke-width="2.5"></path>
+                    <circle cx="32" cy="19" r="13" fill="#FFF8E7" stroke="#D9A400" stroke-width="2"></circle>
+                    <path d="M32 12v14M25 19h14" stroke="#D9A400" stroke-width="2.5"></path>
+                    <path d="M3 64l12-20 11 7-8 13z" fill="#FFFFFF" stroke="#4A1D7A" stroke-width="2" stroke-linejoin="round"></path>
+                    <path d="M61 64L49 44l-11 7 8 13z" fill="#FFFFFF" stroke="#4A1D7A" stroke-width="2" stroke-linejoin="round"></path>
+                    <path d="M20 47l9-13" stroke="#5C3A21" stroke-width="9"></path>
+                    <path d="M44 47l-9-13" stroke="#5C3A21" stroke-width="9"></path>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{event.isGraves}}" hint-placeholder-val="{{ false }}">
+                  <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="0" y="54" width="64" height="10" rx="3" fill="#7FB069"></rect>
+                    <path d="M41 54V35a8 8 0 0 1 16 0v19z" fill="#B9B4C4" stroke="#5B5368" stroke-width="2"></path>
+                    <path d="M49 34v12M45 38h8" stroke="#5B5368" stroke-width="2.5"></path>
+                    <path d="M30 54V46a4.5 4.5 0 0 1 9 0v8z" fill="#B9B4C4" stroke="#5B5368" stroke-width="2"></path>
+                    <path d="M3 54L8 27q7-7 14 0l5 27z" fill="#4A1D7A"></path>
+                    <path d="M15 24v30" stroke="#F5B82E" stroke-width="3"></path>
+                    <circle cx="15" cy="13" r="7" fill="#5C3A21"></circle>
+                    <path d="M20 29l13-10" stroke="#4A1D7A" stroke-width="5"></path>
+                    <circle cx="35" cy="17" r="3.5" fill="#5C3A21"></circle>
+                    <path d="M47 4v12M42 8h10" stroke="#D9A400" stroke-width="3"></path>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{event.emoji}}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="font-size: 46px; line-height: 1">{{event.emoji}}</span>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+      <p style="margin: 1.5rem 0 0; font-size: 18px; line-height: 1.4; color: #5B5368">Last updated 1 November 2026. Unofficial site. Events come from oltonfriary.org.uk</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+const TODAY = '2026-11-01';
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MASS_DAY = [{ time: '7:00am', title: 'Mass' }, { time: '10:15am', title: 'Mass' }];
+const GRAVES = 'Blessing of Graves';
+const MEDITATION = { time: '1:00pm', title: 'Monday Meditation', note: 'Parish Meeting Room' };
+const DAYS = [
+  { date: '2026-11-01', feast: 'All Saints Day', events: [
+    { time: '9:00am', title: 'Mass' }, { time: '11:00am', title: 'Mass' },
+    { time: '2:00pm', title: GRAVES, note: 'Brandwood End' }, { time: '6:00pm', title: 'Mass' }] },
+  { date: '2026-11-02', feast: 'All Souls Day', events: [
+    { time: '7:00am', title: 'Mass' }, { time: '10:15am', title: 'Mass', note: 'In church' }, MEDITATION,
+    { time: '7:30pm', title: 'Journey in Faith', note: 'For those seeking to join the Catholic Church' }] },
+  { date: '2026-11-03', feast: 'Saint Martin de Porres', events: [
+    { time: '7:00am', title: 'Mass' }, { time: '10:15am', title: 'Mass' }, { time: '10:45am', title: 'Rosary of the Unborn' },
+    { time: '7:00pm', title: 'Prayer before the Blessed Sacrament' }] },
+  { date: '2026-11-04', feast: 'Saint Charles Borromeo', events: MASS_DAY },
+  { date: '2026-11-05', events: MASS_DAY },
+  { date: '2026-11-06', feast: 'Our Lady of Good Remedies', events: MASS_DAY },
+  { date: '2026-11-07', feast: 'Saint Willibrord', events: [
+    { time: '9:30am', title: 'Confessions' },
+    { time: '10:15am', title: 'Celebration of Life Mass', note: 'With Bishop David Evans. Refreshments afterwards in the Parish Hall' },
+    { time: 'After Mass', title: GRAVES, note: 'Olton Friary' },
+    { time: '3:00pm', title: GRAVES, note: 'Oscott Cemetery' }] },
+  { date: '2026-11-08', feast: 'Thirty Second Sunday', events: [
+    { time: '9:00am', title: 'Mass' }, { time: '11:00am', title: 'Mass' },
+    { time: '2:00pm', title: GRAVES, note: 'Widney Manor, part 1' }, { time: '6:00pm', title: 'Mass' }] },
+  { date: '2026-11-15', events: [{ time: '2:00pm', title: GRAVES, note: 'Widney Manor, part 2' }] },
+  { date: '2026-11-16', events: [MEDITATION] },
+  { date: '2026-11-22', events: [{ time: '2:00pm', title: GRAVES, note: 'Robin Hood' }] },
+  { date: '2026-11-30', events: [MEDITATION] },
+  { date: '2026-12-14', events: [MEDITATION] },
+  { date: '2027-02-05', events: [{ time: '5 to 7 Feb', title: 'Medjugorje Apostolate Annual Retreat', note: 'Kairos Centre, Roehampton, London' }] }
+];
+
+function toDate(key) { return new Date(key + 'T12:00:00Z'); }
+function weekStart(key) {
+  const d = toDate(key);
+  d.setUTCDate(d.getUTCDate() - d.getUTCDay());
+  return d.toISOString().slice(0, 10);
+}
+function periodKey(key, view) { return view === 'week' ? weekStart(key) : key.slice(0, 7); }
+function periodLabel(period, view) {
+  if (view === 'month') {
+    const [y, m] = period.split('-');
+    return MONTHS[Number(m) - 1] + ' ' + y;
+  }
+  const start = toDate(period);
+  const end = new Date(start.getTime());
+  end.setUTCDate(end.getUTCDate() + 6);
+  const from = start.getUTCDate() + (start.getUTCMonth() === end.getUTCMonth() ? '' : ' ' + MONTHS[start.getUTCMonth()]);
+  return from + ' to ' + end.getUTCDate() + ' ' + MONTHS[end.getUTCMonth()];
+}
+function dayHeading(key) {
+  const d = toDate(key);
+  const text = WEEKDAYS[d.getUTCDay()] + ' ' + d.getUTCDate() + ' ' + MONTHS[d.getUTCMonth()];
+  return key === TODAY ? 'Today, ' + text : text;
+}
+
+const EMOJI = { 'Confessions': '🙏', 'Rosary of the Unborn': '📿', 'Prayer before the Blessed Sacrament': '🕯️', 'Monday Meditation': '🕊️', 'Journey in Faith': '✝️', 'Medjugorje Apostolate Annual Retreat': '⛪' };
+function withIcon(event) {
+  return { ...event, isMass: event.title.endsWith('Mass'), isGraves: event.title === GRAVES, emoji: EMOJI[event.title] || '' };
+}
+
+class Component extends DCLogic {
+  state = { view: 'week', index: 0 };
+
+  renderVals() {
+    const { view, index } = this.state;
+    const periods = [...new Set(DAYS.map((d) => periodKey(d.date, view)))];
+    const period = periods[index];
+    const on = (active) => (active ? ['#4A1D7A', '#FFFFFF'] : ['#FFFFFF', '#4A1D7A']);
+    const [weekBg, weekFg] = on(view === 'week');
+    const [monthBg, monthFg] = on(view === 'month');
+    return {
+      weekBg, weekFg, monthBg, monthFg,
+      periodLabel: periodLabel(period, view),
+      prevVisible: index > 0 ? 'visible' : 'hidden',
+      nextVisible: index < periods.length - 1 ? 'visible' : 'hidden',
+      showWeeks: () => this.setState({ view: 'week', index: 0 }),
+      showMonths: () => this.setState({ view: 'month', index: 0 }),
+      previous: () => this.setState({ index: Math.max(0, index - 1) }),
+      next: () => this.setState({ index: Math.min(periods.length - 1, index + 1) }),
+      days: DAYS.filter((d) => periodKey(d.date, view) === period).map((d) => ({ ...d, heading: dayHeading(d.date), events: d.events.map(withIcon) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

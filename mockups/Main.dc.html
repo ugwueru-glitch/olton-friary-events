@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Olton Friary Events, home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Gelasio:wght@400&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+</style>
+</helmet>
+<div style="position: relative; min-height: 100vh; box-sizing: border-box; overflow: hidden; background: #FFFFFF; font-family: 'Atkinson Hyperlegible', sans-serif; color: #231A33; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 1rem 2rem">
+  <img src="/_blob/a2692c4d5a506828240c217dec39d216" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 20% bottom; opacity: {{backgroundStrength}}">
+  <h1 aria-label="Olton Friary" style="position: relative; margin: 0 0 5rem; width: 640px; max-width: 100%">
+    <svg aria-hidden="true" viewBox="0 0 640 150" style="display: block; width: 100%; height: auto">
+      <path id="arc-desktop" d="M20 130 Q320 30 620 130" fill="none"></path>
+      <text fill="#000000" font-family="Gelasio, Georgia, serif" font-size="80" font-weight="400" text-anchor="middle"><textPath href="#arc-desktop" startOffset="50%">Olton Friary</textPath></text>
+    </svg>
+  </h1>
+  <div style="position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; width: 100%; max-width: 60rem">
+    <a href="ChurchEvents.dc.html" style="flex: 1 1 22rem; max-width: 28rem; height: 170px; box-sizing: border-box; border-radius: 85px; background: rgba(74, 29, 122, 0.85); color: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 0 1.5rem; font-size: 34px; font-weight: 700">
+      <span aria-hidden="true" style="font-size: 56px; line-height: 1">⛪</span>
+      <span>Church Events</span>
+    </a>
+    <a href="SocialEvents.dc.html" style="flex: 1 1 22rem; max-width: 28rem; height: 170px; box-sizing: border-box; border-radius: 85px; background: rgba(245, 184, 46, 0.85); color: #231A33; display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 0 1.5rem; font-size: 34px; font-weight: 700">
+      <svg aria-hidden="true" width="72" height="72" viewBox="0 0 64 64" fill="none" stroke="#231A33" stroke-width="2.6" stroke-linecap="round">
+        <g><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+        <g transform="rotate(60 32 32)"><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+        <g transform="rotate(120 32 32)"><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+        <g transform="rotate(180 32 32)"><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+        <g transform="rotate(240 32 32)"><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+        <g transform="rotate(300 32 32)"><circle cx="32" cy="8" r="4.5"></circle><path d="M32 12.5V23M26.5 17h11"></path></g>
+      </svg>
+      <span>Social Events</span>
+    </a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"backgroundStrength":{"editor":"range","default":0.6,"min":0.2,"max":1,"step":0.05},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { backgroundStrength: this.props.backgroundStrength ?? 0.6 };
+  }
+}
+</script>
+</body>
+</html>
