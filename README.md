@@ -2,7 +2,7 @@
 
 A simple website showing upcoming church and social events at Olton Friary, kept up to date automatically from [oltonfriary.org.uk](https://www.oltonfriary.org.uk/).
 
-**Status:** mockups and website shell approved. Phase 5 is under way on the `website` branch: Church Events works from sample events typed in from the mockup, and Social Events is still empty. The site doesn't read the parish website yet.
+**Status:** mockups and website shell approved. Phase 5 is under way on the `website` branch: Church Events and Social Events work from sample events typed in from the mockups. The site doesn't read the parish website yet.
 
 ## What it does
 

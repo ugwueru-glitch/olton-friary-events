@@ -41,6 +41,17 @@
     {"date":"2026-11-22","time":"2:00pm","title":"Blessing of Graves","note":"Robin Hood","category":"church","icon":"graves","source":"sample"},
     {"date":"2026-11-30","time":"1:00pm","title":"Monday Meditation","note":"Parish Meeting Room","category":"church","icon":"🕊️","source":"sample"},
     {"date":"2026-12-14","time":"1:00pm","title":"Monday Meditation","note":"Parish Meeting Room","category":"church","icon":"🕊️","source":"sample"},
-    {"date":"2027-02-05","time":"5 to 7 Feb","title":"Medjugorje Apostolate Annual Retreat","note":"Kairos Centre, Roehampton, London","category":"church","icon":"⛪","source":"sample"}
+    {"date":"2027-02-05","time":"5 to 7 Feb","title":"Medjugorje Apostolate Annual Retreat","note":"Kairos Centre, Roehampton, London","category":"church","icon":"⛪","source":"sample"},
+    {"date":"2026-11-01","time":"3:00pm","title":"Bereavement Support Group","note":"Until 4:30pm. Friary Lounge","category":"social","icon":"🤝","source":"sample"},
+    {"date":"2026-11-04","time":"7:00pm","title":"Illustrated talk on the Shroud of Turin","note":"Friary Library. Sign the sheet at the back of the church","category":"social","icon":"🗣️","source":"sample"},
+    {"date":"2026-11-14","time":"11:00am","title":"Christmas Market","note":"Until 2:00pm. Parish Hall. Tables £15","category":"social","icon":"🎄","source":"sample"},
+    {"date":"2026-11-14","time":"7:00pm","title":"Music and Spice Night","note":"In aid of HCPT. Parish Hall. Tickets £12 including supper","category":"social","icon":"🎶","source":"sample"},
+    {"date":"2026-11-21","time":"7:00pm","title":"Talia Dean, Christian Singer","note":"","category":"social","icon":"🎤","source":"sample"},
+    {"date":"2026-11-27","time":"6:00pm","title":"Christmas Flower Workshop 1","note":"Until 8:00pm. Sign up after Mass","category":"social","icon":"💐","source":"sample"},
+    {"date":"2026-11-28","time":"11:00am","title":"Christmas Flower Workshop 2","note":"Until 1:00pm. Sign up after Mass","category":"social","icon":"💐","source":"sample"},
+    {"date":"2026-12-05","time":"","title":"Parish and School Christmas Fayre","note":"Our Lady of Compassion","category":"social","icon":"🎁","source":"sample"},
+    {"date":"2027-01-23","time":"7:00pm","title":"Race Night","note":"","category":"social","icon":"🏇","source":"sample"},
+    {"date":"2027-02-21","time":"2:00pm","title":"Afternoon Tea Dance","note":"","category":"social","icon":"☕","source":"sample"},
+    {"date":"2027-03-20","time":"7:00pm","title":"Irish Night","note":"","category":"social","icon":"☘️","source":"sample"}
   ]
 }

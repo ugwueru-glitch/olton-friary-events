@@ -97,7 +97,7 @@ function eventRow(event) {
 function dayBlock(day) {
   const block = element('section', 'day');
   block.append(element('h2', '', dayHeading(day.date)));
-  if (feasts[day.date]) block.append(element('div', 'day-feast', feasts[day.date]));
+  if (category === 'church' && feasts[day.date]) block.append(element('div', 'day-feast', feasts[day.date]));
   block.append(...day.events.map(eventRow));
   return block;
 }

@@ -163,8 +163,17 @@ a {
 .list-screen-church {
   --accent: var(--friary-purple);
   --on-accent: var(--white);
+  --control: var(--friary-purple);
   --pale: var(--pale-purple);
   --heading: var(--friary-purple);
+}
+
+.list-screen-social {
+  --accent: var(--warm-gold);
+  --on-accent: var(--dark-ink);
+  --control: var(--dark-ink);
+  --pale: var(--pale-gold);
+  --heading: var(--dark-ink);
 }
 
 /* Filter */
@@ -189,7 +198,7 @@ a {
 
 .filter-view {
   display: flex;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--control);
   border-radius: 26px;
   overflow: hidden;
 }
@@ -199,7 +208,7 @@ a {
   height: 48px;
   border: 0;
   background: var(--white);
-  color: var(--accent);
+  color: var(--control);
   font-family: inherit;
   font-size: 19px;
   font-weight: 700;
@@ -224,7 +233,7 @@ a {
   border: 0;
   border-radius: 24px;
   background: var(--pale);
-  color: var(--accent);
+  color: var(--control);
   display: flex;
   align-items: center;
   justify-content: center;
