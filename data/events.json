@@ -1,7 +1,6 @@
 {
-  "lastRefreshed": "2026-11-01",
+  "lastRefreshed": "2026-11-02",
   "feasts": {
-    "2026-11-01": "All Saints Day",
     "2026-11-02": "All Souls Day",
     "2026-11-03": "Saint Martin de Porres",
     "2026-11-04": "Saint Charles Borromeo",
@@ -10,11 +9,6 @@
     "2026-11-08": "Thirty Second Sunday"
   },
   "events": [
-    {"date":"2026-11-01","time":"9:00am","title":"Mass","note":"","category":"church","icon":"mass","source":"newsletter-diary"},
-    {"date":"2026-11-01","time":"11:00am","title":"Mass","note":"","category":"church","icon":"mass","source":"newsletter-diary"},
-    {"date":"2026-11-01","time":"2:00pm","title":"Blessing of Graves","note":"Brandwood End","category":"church","icon":"graves","source":"newsletter"},
-    {"date":"2026-11-01","time":"3:00pm","title":"Bereavement Support Group","note":"Until 4:30pm. Friary Lounge","category":"social","icon":"🤝","source":"newsletter"},
-    {"date":"2026-11-01","time":"6:00pm","title":"Mass","note":"","category":"church","icon":"mass","source":"newsletter-diary"},
     {"date":"2026-11-02","time":"7:00am","title":"Mass","note":"","category":"church","icon":"mass","source":"newsletter-diary"},
     {"date":"2026-11-02","time":"10:15am","title":"Mass","note":"In church","category":"church","icon":"mass","source":"newsletter-diary"},
     {"date":"2026-11-02","time":"1:00pm","title":"Monday Meditation","note":"Parish Meeting Room","category":"church","icon":"🕊️","source":"newsletter"},
