@@ -26,6 +26,7 @@ A simple website showing upcoming church and social events at Olton Friary, kept
 | `handoffs/` | The specification: shared rules, one document per screen, the scraper, and decisions |
 | `mockups/` | The approved screens from the design canvas |
 | `assets/church-background.png` | The cleaned Home background, 932 × 462 pixels |
+| `assets/apple-touch-icon.png`, `assets/icon-192.png`, `assets/icon-512.png`, `site.webmanifest` | The home screen icon for iPhone and Android |
 
 ## Where to start
 

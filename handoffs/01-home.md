@@ -27,6 +27,7 @@ Top to bottom. Nothing else appears on this screen.
 ## Not shown in the mockup
 
 - The browser tab title is "Olton Friary Events".
+- The home screen icon, when the site is saved to a phone's home screen, is the Home background with "OF" in black Gelasio in the centre. It is in `assets/apple-touch-icon.png` for iPhone and `assets/icon-192.png` and `icon-512.png` for Android, listed in `site.webmanifest`.
 - The arc must scale down on very narrow screens without clipping.
 
 ## Planned for later
