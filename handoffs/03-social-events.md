@@ -50,7 +50,7 @@ Left out on purpose: the weekly classes under "Regular activities in our parish 
 - With no published time, show "Time to be confirmed".
 - The same event from two sources appears once. "HCPT Concert Night" in the newsletter and "Music and Spice Night" in the PDF are one event.
 - "OLC" means Our Lady of Compassion.
-- Email addresses for booking are left out, because contact details never appear.
+- Email addresses for booking are left out by the automatic scraper. Events from the owner's newsletter PDF may keep them, under the exception in handoff 00.
 
 ## Not shown in the mockup
 

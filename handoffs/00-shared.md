@@ -57,9 +57,10 @@ See handoff 04. Visitors store nothing, and the site needs no accounts or sign-i
 - Lists show events from today onwards. Past events disappear.
 - Only published events appear. Regular Masses are never projected beyond what the site lists.
 - Times are shown in the form `7:00am`.
-- Mass intentions, names of the dead and birthdays never appear.
-- Contact details and email addresses never appear.
-- If the source doesn't state something, the app says so ("Time to be confirmed") and never guesses a date.
+- Events from the owner's weekly newsletter PDF (see handoff 04) show each Mass intention in the Mass row's note, as the newsletter prints it. They also show names and contact details that belong to a real event, such as a funeral or a booking email. Prayer lists, the list of the sick and memorial notices are left out, because they aren't events. The owner decided this on 8 November 2026.
+- The automatic scraper still leaves out intentions, names of the dead, birthdays and contact details, because fixed rules can't tell an event from a private notice.
+- If the source doesn't state something, the app says so ("Time to be confirmed") and never guesses a date. The owner may approve a worked-out date as a one-off, as with the Advent Thursdays in November 2026.
+- When a later newsletter changes an event's date, time or details, the existing event is updated, never listed twice.
 
 ## How the mockup differs from the real app
 

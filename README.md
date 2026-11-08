@@ -2,7 +2,7 @@
 
 A simple website showing upcoming church and social events at Olton Friary, kept up to date automatically from [oltonfriary.org.uk](https://www.oltonfriary.org.uk/).
 
-**Status:** live at https://ugwueru-glitch.github.io/olton-friary-events/, published from `main`. The events come from the parish website, and a timer refreshes them every Monday. Ask the Parish Office before sharing the link publicly.
+**Status:** live at https://ugwueru-glitch.github.io/olton-friary-events/, published from `main`. The events come from the parish website, which a timer reads every Monday, and from the weekly newsletter PDF the owner sends. Ask the Parish Office before sharing the link publicly.
 
 ## What it does
 
@@ -21,6 +21,7 @@ A simple website showing upcoming church and social events at Olton Friary, kept
 | `style.css` | Colours, fonts and layout for every screen |
 | `list.js` | Draws a list and its Week/Month filter |
 | `data/events.json` | The events the lists show |
+| `data/newsletter-pdf.json` | Events read by hand from the weekly newsletter PDF |
 | `scraper/` | The program that reads the parish website, its tests and its test samples |
 | `.github/workflows/refresh.yml` | The timer that runs the scraper and publishes the result |
 | `handoffs/` | The specification: shared rules, one document per screen, the scraper, and decisions |

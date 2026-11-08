@@ -16,7 +16,9 @@ There are no open choices. The owner decided all of these on 1 November 2026, an
 
 ## Also decided
 
-- Mass intentions are left out.
+- Mass intentions are shown for events from the owner's newsletter PDF, and left out by the automatic scraper. This changed on 8 November 2026, as set out in handoff 00.
+- The weekly newsletter PDF comes to the owner on WhatsApp, so it can't be read automatically. The owner sends it in chat to have its events added, as set out in handoff 04. They checked the first one, on 8 November 2026. Later ones go straight to the site.
+- When a later newsletter changes an event, the event is updated. This was decided on 8 November 2026.
 - Am and pm are worked out from the order of the day's list.
 - Bereavement group and Shroud talk go under Social Events.
 - Weekly Parish Hall classes are left out.

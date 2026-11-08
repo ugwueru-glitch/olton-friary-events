@@ -31,11 +31,13 @@ const DIARY_ACTIVITIES = [
 ];
 
 // Notices the rules recognise by name. Anything else with a date goes to the owner.
+// Each name must start the line, so a sentence that only mentions an event, such as
+// "after the Christmas Fayre ... email Paul by November 23", can't give it a date.
 const KNOWN = [
-  { id: 'market', match: /christmas market/i, title: 'Christmas Market', category: 'social', icon: '🎄', hall: true },
-  { id: 'hcpt', match: /hcpt|music and spice/i, title: 'Music and Spice Night', category: 'social', icon: '🎶', hall: true, opening: 'In aid of HCPT' },
-  { id: 'flowers', match: /christmas flower workshop/i, category: 'social', icon: '💐' },
-  { id: 'fayre', match: /christmas fayre/i, title: 'Parish and School Christmas Fayre', category: 'social', icon: '🎁', opening: 'Our Lady of Compassion', noTime: true },
+  { id: 'market', match: /^(?:friary )?christmas market/i, title: 'Christmas Market', category: 'social', icon: '🎄', hall: true },
+  { id: 'hcpt', match: /^(?:hcpt|music and spice)/i, title: 'Music and Spice Night', category: 'social', icon: '🎶', hall: true, opening: 'In aid of HCPT' },
+  { id: 'flowers', match: /^christmas flower workshop/i, category: 'social', icon: '💐' },
+  { id: 'fayre', match: /^(?:parish (?:&|and) school |olton friary \/ our lady of compassion )?christmas fayre/i, title: 'Parish and School Christmas Fayre', category: 'social', icon: '🎁', opening: 'Our Lady of Compassion', noTime: true },
   { id: 'journey', match: /^journey in faith/i, title: 'Journey in Faith', category: 'church', icon: '✝️', opening: 'For those seeking to join the Catholic Church' },
   { match: /^celebration of life mass/i, title: 'Celebration of Life Mass', category: 'church', icon: 'mass' }
 ];
@@ -552,7 +554,7 @@ function buildData({ newsletter, diaryPage, pdf, previous, today, minDays = 3, m
     && !fresh.has(eventKey(e)) && !(e.source === 'newsletter-diary' && diary.dates.includes(e.date)));
   if (diary.dates.length < minDays) unread.push(`The Weekly Diary only had ${diary.dates.length} upcoming days`);
   if (accepted.length < minEvents) throw new Error(`Only ${accepted.length} events were read, so the result looks wrong`);
-  const before = ((previous && previous.events) || []).filter((e) => e.date >= today).length;
+  const before = ((previous && previous.events) || []).filter((e) => e.date >= today && e.source !== 'newsletter-pdf').length;
   if (accepted.length < before * minShare) throw new Error(`Only ${accepted.length} events were read, down from ${before}, so the result looks wrong`);
 
   const feasts = {};
@@ -562,6 +564,26 @@ function buildData({ newsletter, diaryPage, pdf, previous, today, minDays = 3, m
 
   const events = sortEvents([...accepted, ...kept]).map(publicEvent);
   return { data: { lastRefreshed: today, feasts: sortedFeasts, events }, unread: [...new Set(unread)].map(scrub), read: accepted.length, kept: kept.length };
+}
+
+// Events the owner sends from the WhatsApp newsletter PDF, kept in
+// data/newsletter-pdf.json. They hold fuller details than the website,
+// so they replace the website's copy of the same event.
+function applyNewsletterPdf(data, newsletter, today) {
+  const own = newsletter.events.filter((e) => e.date >= today).map((e) => ({ ...e, source: 'newsletter-pdf' }));
+  const theirs = new Set(own.map(eventKey));
+  const rest = data.events.filter((e) => e.source !== 'newsletter-pdf' && !theirs.has(eventKey(e)));
+  const feasts = { ...data.feasts };
+  for (const [date, name] of Object.entries(newsletter.feasts || {})) if (date >= today) feasts[date] = name;
+  return {
+    ...data,
+    feasts: Object.fromEntries(Object.entries(feasts).sort(([a], [b]) => a.localeCompare(b))),
+    events: sortEvents([...rest, ...own]).map(publicEvent)
+  };
+}
+
+function todayInBritain() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date());
 }
 
 function formatData(data) {
@@ -576,4 +598,4 @@ ${lines.join(',\n')}
 `;
 }
 
-module.exports = { buildData, cleanLine, findDates, formatData, htmlToLines, parseDiary, parseNotices, parsePdf, resolveDate };
+module.exports = { applyNewsletterPdf, buildData, cleanLine, findDates, formatData, htmlToLines, parseDiary, parseNotices, parsePdf, resolveDate, todayInBritain };

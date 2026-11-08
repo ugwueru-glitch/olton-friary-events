@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { test } = require('node:test');
-const { buildData, cleanLine, htmlToLines, resolveDate } = require('./parse');
+const { applyNewsletterPdf, buildData, cleanLine, htmlToLines, resolveDate } = require('./parse');
 
 const samples = path.join(__dirname, 'samples');
 const readLines = (name) => fs.readFileSync(path.join(samples, name), 'utf8').split(/\r?\n/).filter(Boolean);
@@ -135,4 +135,43 @@ test('the site\'s habits are tidied before reading', () => {
   assert.equal(cleanLine('6 . 00 Mass'), '6.00 Mass');
   assert.equal(cleanLine('10 .15 Mass'), '10.15 Mass');
   assert.deepEqual(htmlToLines('<p>Tickets &pound;12&nbsp;now</p><script>x</script><div>Next</div>'), ['Tickets £12 now', 'Next']);
+});
+
+test('newsletter PDF events replace the website copy of the same event', () => {
+  const { data } = build();
+  const newsletterPdf = { feasts: { '2026-11-08': '32nd Sunday, Remembrance Sunday' }, events: [
+    { date: '2026-11-08', time: '9:00am', title: 'Mass', note: 'Sample Intention', category: 'church', icon: 'mass' },
+    { date: '2026-11-14', time: '11:00am', title: 'Christmas Market', note: 'Fuller note', category: 'social', icon: '🎄' },
+    { date: '2026-12-05', time: '12:00pm', title: 'Parish and School Christmas Fayre', note: 'Until 3:00pm', category: 'social', icon: '🎁' }
+  ] };
+  const result = applyNewsletterPdf(data, newsletterPdf, '2026-11-08');
+  const masses = result.events.filter((e) => e.date === '2026-11-08' && e.time === '9:00am');
+  assert.equal(masses.length, 1);
+  assert.equal(masses[0].note, 'Sample Intention');
+  assert.equal(result.events.filter((e) => e.title === 'Christmas Market').length, 1);
+  assert.equal(result.events.find((e) => e.title === 'Parish and School Christmas Fayre').time, '12:00pm');
+  assert.equal(result.feasts['2026-11-08'], '32nd Sunday, Remembrance Sunday');
+});
+
+test('a newer newsletter PDF replaces the older one, so a moved event shows once', () => {
+  const { data } = build();
+  const older = { events: [{ date: '2026-11-24', time: '', title: 'Funeral', note: '', category: 'church', icon: '⛪' }] };
+  const newer = { events: [{ date: '2026-11-25', time: '10:00am', title: 'Funeral', note: '', category: 'church', icon: '⛪' }] };
+  const result = applyNewsletterPdf(applyNewsletterPdf(data, older, TODAY), newer, TODAY);
+  assert.deepEqual(result.events.filter((e) => e.title === 'Funeral').map((e) => e.date), ['2026-11-25']);
+});
+
+test('the Monday refresh keeps newsletter PDF events', () => {
+  const stored = applyNewsletterPdf(build().data, { events: [
+    { date: '2026-11-24', time: '', title: 'Funeral', note: '', category: 'church', icon: '⛪' }
+  ] }, TODAY);
+  assert.ok(build({ previous: stored }).data.events.some((e) => e.title === 'Funeral'));
+});
+
+test('a sentence that only mentions an event never gives it a date', () => {
+  const extra = [...newsletter];
+  extra.splice(extra.indexOf('Notices') + 1, 0, 'A good time to wind down after the Christmas Fayre at OLC Please email Paul by November 23 to signal attendance');
+  const { data, unread } = build({ newsletter: extra });
+  assert.ok(!data.events.some((e) => e.date === '2026-11-23'));
+  assert.equal(unread.length, 1);
 });

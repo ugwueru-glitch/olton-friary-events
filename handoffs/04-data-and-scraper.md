@@ -67,6 +67,15 @@ Wrong dates are worse than missing ones, because people could turn up at the wro
 3. Never publish a failed or partial run.
 4. Send the owner an automatic email when a run fails, or when it finds lines it couldn't read. The hosting service's own free notifications are used for this.
 
+## The weekly newsletter PDF
+
+The full newsletter reaches the owner as a PDF on WhatsApp. It has more detail than the website, so the owner sends it in chat each week, and its events are read by hand. They go into `data/newsletter-pdf.json`, with its feasts and a line naming the newsletter. `npm run newsletter` adds them to `data/events.json`. The Monday refresh adds them too, every time it runs.
+
+- An event in this file replaces the website's copy of the same event, so its fuller details are never overwritten.
+- The file holds the newsletter's events from that week onwards. Events from earlier newsletters stay in it until their date passes, unless a newer newsletter changes or drops them.
+- When a newer newsletter changes an event's date, time or details, the event is edited in this file and never added twice.
+- The PDF itself is never saved in the repository. Owner copies stay in their private folder.
+
 ## Testing
 
 Save copies of the current pages and PDF as test samples in `scraper/samples/`. The repository is public, so names, intentions, email addresses and phone numbers are replaced with placeholders in the samples. The expected results for those samples are the events shown in the approved mockups. Add a new sample each time a newsletter breaks a rule, so the fix stays fixed.

@@ -2,11 +2,12 @@
 // it stops with an error and leaves the previous good file untouched.
 const fs = require('fs');
 const path = require('path');
-const { buildData, cleanLine, formatData, htmlToLines } = require('./parse');
+const { applyNewsletterPdf, buildData, cleanLine, formatData, htmlToLines, todayInBritain } = require('./parse');
 
 const SITE = 'https://www.oltonfriary.org.uk';
 const AGENT = 'OltonFriaryEvents/1.0 (+https://github.com/ugwueru-glitch/olton-friary-events)';
 const DATA_FILE = path.join(__dirname, '..', 'data', 'events.json');
+const NEWSLETTER_FILE = path.join(__dirname, '..', 'data', 'newsletter-pdf.json');
 const UNREAD_FILE = path.join(__dirname, 'unread.txt');
 const PAUSE_MS = 1000;
 const LINE_GAP = 2;
@@ -56,23 +57,22 @@ async function pdfLines(url) {
   return lines;
 }
 
-function todayInBritain() {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date());
-}
-
 async function main() {
   const newsletter = htmlToLines(await fetchHtml('/welcome/weekly-newsletter/'));
   const diaryPage = htmlToLines(await fetchHtml('/worship-and-sacraments/mass-information/weekly-diary/'));
   const pdf = await pdfLines(findPdf(await fetchHtml('/hire-and-events/events/')));
   const previous = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
 
-  const { data, unread, read, kept } = buildData({ newsletter, diaryPage, pdf, previous, today: todayInBritain() });
+  const today = todayInBritain();
+  const { data, unread, read, kept } = buildData({ newsletter, diaryPage, pdf, previous, today });
+  const fromPdf = fs.existsSync(NEWSLETTER_FILE) ? JSON.parse(fs.readFileSync(NEWSLETTER_FILE, 'utf8')) : null;
+  const combined = fromPdf ? applyNewsletterPdf(data, fromPdf, today) : data;
 
   const temporary = `${DATA_FILE}.tmp`;
-  fs.writeFileSync(temporary, formatData(data));
+  fs.writeFileSync(temporary, formatData(combined));
   fs.renameSync(temporary, DATA_FILE);
   fs.writeFileSync(UNREAD_FILE, unread.length ? `${unread.join('\n')}\n` : '');
-  console.log(`Read ${read} events, kept ${kept} from earlier, ${data.events.length} now stored.`);
+  console.log(`Read ${read} events, kept ${kept} from earlier, ${combined.events.length} now stored.`);
   console.log(unread.length ? `Lines for the owner to check:\n${unread.join('\n')}` : 'No unread lines.');
 }
 

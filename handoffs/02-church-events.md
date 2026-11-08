@@ -51,7 +51,9 @@ Feasts show under the day heading. They are not separate rows.
 
 ## Content rules
 
-- Rows say "Mass", without the intention.
+- Rows say "Mass". From the owner's newsletter PDF, the note holds the intention as printed, such as "Kath Barnett RIP", with "also" names added after it. Rows from the automatic scraper have no intention.
+- Sunday feast lines give the Sunday's number and any other name, such as "32nd Sunday, Remembrance Sunday".
+- Baptisms aren't listed.
 - The site writes "7.00" with no am or pm. Work it out from the order of that day's list: the 7.00 before 10.15 is am, and the 7.00 after it is pm. The Sunday 6.00 after 11.00 is pm.
 - Sunday's unnamed 11.00 entry is a Mass, because the home page lists Sunday Mass at 11am.
 - Blessing of Graves rows show the cemetery as the note.

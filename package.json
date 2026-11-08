@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "scrape": "node scraper/scrape.js",
+    "newsletter": "node scraper/merge-newsletter.js",
     "test": "node --test scraper/parse.test.js"
   },
   "dependencies": {
