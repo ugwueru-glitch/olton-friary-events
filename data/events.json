@@ -1,7 +1,6 @@
 {
-  "lastRefreshed": "2026-11-08",
+  "lastRefreshed": "2026-11-09",
   "feasts": {
-    "2026-11-08": "32nd Sunday, Remembrance Sunday",
     "2026-11-09": "Dedication of the Lateran Basilica",
     "2026-11-10": "Saint Leo the Great",
     "2026-11-11": "Saint Martin of Tours",
@@ -10,10 +9,6 @@
     "2026-11-15": "33rd Sunday, Safeguarding Sunday"
   },
   "events": [
-    {"date":"2026-11-08","time":"9:00am","title":"Mass","note":"Peggy & Douglas Coshan","category":"church","icon":"mass","source":"newsletter-pdf"},
-    {"date":"2026-11-08","time":"11:00am","title":"Mass","note":"Kath Barnett RIP. Silence and Remembrance at the start of Mass","category":"church","icon":"mass","source":"newsletter-pdf"},
-    {"date":"2026-11-08","time":"2:00pm","title":"Blessing of Graves","note":"Widney Manor, part 1","category":"church","icon":"graves","source":"newsletter-pdf"},
-    {"date":"2026-11-08","time":"6:00pm","title":"Mass","note":"People of the Parish. Also Fr Fitzpatrick RIP","category":"church","icon":"mass","source":"newsletter-pdf"},
     {"date":"2026-11-09","time":"7:00am","title":"Mass","note":"Private intention","category":"church","icon":"mass","source":"newsletter-pdf"},
     {"date":"2026-11-09","time":"10:15am","title":"Mass","note":"Recovery of a friend. Also Shelia Bogue","category":"church","icon":"mass","source":"newsletter-pdf"},
     {"date":"2026-11-09","time":"7:00pm","title":"First Holy Communion 2027: first meeting for parents","note":"Day Chapel. All parents welcome, including those whose children don't attend OLC","category":"church","icon":"⛪","source":"newsletter-pdf"},
